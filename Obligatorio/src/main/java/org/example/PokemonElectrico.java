@@ -20,6 +20,8 @@ public class PokemonElectrico extends Pokemon {
      //Constructor default que inicializa un objeto del tipo PokemonElectrico.
 
     public PokemonElectrico() {
+        super("",0,0,"Electrico");
+        this.poderElectrico=0;
     }
 
 
@@ -45,8 +47,7 @@ public class PokemonElectrico extends Pokemon {
      //Metodo absracto para realzar un ataque especial
      @Override
      public String ataqueEspecial() {
-         return "\nEl pokemon " + getNombre() + " realiza un ataque de fuego con" + getPoderElectrico() + " punto de pdoer";
+         return "\nEl pokemon " + getNombre() + " realiza un ataque de electrico con" + getPoderElectrico() + " punto de poder";
      }
-
 }
 

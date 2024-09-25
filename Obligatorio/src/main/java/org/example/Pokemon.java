@@ -18,17 +18,17 @@ public abstract class Pokemon{
 
     //Creamos el constructor default que inicializa un objeto del tipo Pokemon con valores por defecto.
     public Pokemon(){
-        this.nombre="";
-        this.nivel=0;
-        this.puntosDeVida=0;
-        this.tipo="";
+        this.nombre = "";
+        this.nivel = 0;
+        this.puntosDeVida = 0;
+        this.tipo = "";
     }
     // Constructor específico que inicializa un objeto Pokemon con los atributos ingresados.
     public Pokemon(String nombre,int nivel,int puntosDeVida,String tipo){
-        this.nombre=nombre;
-        this.nivel=nivel;
-        this.puntosDeVida=puntosDeVida;
-        this.tipo=tipo;
+        this.nombre = nombre;
+        this.nivel = nivel;
+        this.puntosDeVida = puntosDeVida;
+        this.tipo = tipo;
     }
     // Creamos los getters & setters de los atributos
     public String getNombre() { //Getter de Nombre
