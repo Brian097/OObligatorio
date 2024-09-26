@@ -56,14 +56,14 @@ public class Main {
 
             // Imprimir arte ASCII con bordes alternados
             System.out.println(blanco +                          "+++++++++++++++++++++++++++++++++++++++++" + reset);
-            System.out.println(rojo   + "+" + reset + amarillo + "                                       " + reset + rojo   + "+" + reset  );
-            System.out.println(blanco + "+" + reset + amarillo + "   -- Menú de Gestión de Pokémon--     " + reset + blanco + "+" + reset );
-            System.out.println(rojo   + "+" + reset + amarillo + "   1. Agregar un Pokémon               " + reset + rojo   + "+" + reset );
-            System.out.println(blanco + "+" + reset + amarillo + "   2. Mostrar Pokémon                  " + reset + blanco + "+" + reset );
-            System.out.println(rojo   + "+" + reset + amarillo + "   3. Realizar Ataque Especial         " + reset + rojo   + "+" + reset );
-            System.out.println(blanco + "+" + reset + amarillo + "   4. Calcular Promedio de Nivel       " + reset + blanco + "+" + reset );
-            System.out.println(rojo   + "+" + reset + amarillo + "   5. Salir                            " + reset + rojo   + "+" + reset );
-            System.out.println(blanco + "+" + reset + amarillo + "                                       " + reset + blanco + "+" + reset );
+            System.out.println(rojo   + "+" + reset + blanco + "                                       " + reset + rojo   + "+" + reset  );
+            System.out.println(blanco + "+" + reset + blanco + "   -- Menú de Gestión de Pokémon--     " + reset + blanco + "+" + reset );
+            System.out.println(rojo   + "+" + reset + blanco + "   1. Agregar un Pokémon               " + reset + rojo   + "+" + reset );
+            System.out.println(blanco + "+" + reset + blanco + "   2. Mostrar Pokémon                  " + reset + blanco + "+" + reset );
+            System.out.println(rojo   + "+" + reset + blanco + "   3. Realizar Ataque Especial         " + reset + rojo   + "+" + reset );
+            System.out.println(blanco + "+" + reset + blanco + "   4. Calcular Promedio de Nivel       " + reset + blanco + "+" + reset );
+            System.out.println(rojo   + "+" + reset + blanco + "   0. Salir                            " + reset + rojo   + "+" + reset );
+            System.out.println(blanco + "+" + reset + blanco + "                                       " + reset + blanco + "+" + reset );
             System.out.println(rojo   +                          "+++++++++++++++++++++++++++++++++++++++++" + reset                        );
 
             System.out.print("Seleccione una opción: ");
@@ -82,13 +82,13 @@ public class Main {
                 case 4:
                     //LLamo al metodo calcular promedio
                     break;
-                case 5:
+                case 0:
                     //Salgo del programa
                     break;
                 default:
                     System.out.println("Debe ser un numero del uno al 5");
             }
-        } while (opcion != 5);
+        } while (opcion != 0);
 
         System.out.print("...");
     }
