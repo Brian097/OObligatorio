@@ -22,8 +22,8 @@ public class PokemonFuego extends Pokemon{
     //Constructores
     //Constructor default que inicializa un objeto del tipo PokemonFuego
     public PokemonFuego() {
-        super("", 0, 0, "electrico");
-        poderFuego = 0;
+        super();
+        this.poderFuego = 0;
     }
 
     //Constructor especifico que inicializa un objeto PokemonFuego con atributos ingresados.

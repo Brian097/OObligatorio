@@ -12,7 +12,7 @@ import java.util.Scanner;
  *
  **/
 
-public class Main {
+public class Principal {
     public static void main(String[] args) {
 
         //Variables
@@ -72,6 +72,7 @@ public class Main {
             switch(opcion){
                 case 1:
                     //LLamo al metodo agregar un pokemon
+                    Metodos.agregarPokemon();
                     break;
                 case 2:
                     //LLamo al metodo mostar pokemon
@@ -86,10 +87,10 @@ public class Main {
                     //Salgo del programa
                     break;
                 default:
-                    System.out.println("Debe ser un numero del uno al 5");
+                    System.out.println("Ingresa un numero válido.");
             }
         } while (opcion != 0);
 
-        System.out.print("...");
+        System.out.print("Saliendo...");
     }
 }

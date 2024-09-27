@@ -20,8 +20,8 @@ public class PokemonPlanta extends Pokemon {
     //Constructor default que inicializa un objeto del tipo PokemonPlanta.
 
     public PokemonPlanta() {
-        super("", 0, 0, "Planta");
-        poderPlanta = 0;
+        super();
+        this.poderPlanta = 0;
     }
 
 

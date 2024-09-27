@@ -13,19 +13,19 @@ package org.example;
  * Clase PokemonElectrico que extiende de la clase base Pokemon.
  */
 public class PokemonElectrico extends Pokemon {
-    // Atributo que representa el poder de agua del Pokémon
+    // Atributo que representa el poder de eléctrico del Pokémon
     private int poderElectrico;
 
 
      //Constructor default que inicializa un objeto del tipo PokemonElectrico.
 
     public PokemonElectrico() {
-        super("",0,0,"Electrico");
-        this.poderElectrico=0;
+        super();
+        this.poderElectrico = 0;
     }
 
 
-     //Constructor especifico que inicializa un objeto PokemonAgua con atributos ingresados.
+     //Constructor especifico que inicializa un objeto PokemonElectrico con atributos ingresados.
 
     public PokemonElectrico(String nombre, int nivel, int puntosDeVida, String tipo, int poderElectrico) {
         super(nombre, nivel, puntosDeVida, tipo); // Llamada al constructor de la clase base Pokemon

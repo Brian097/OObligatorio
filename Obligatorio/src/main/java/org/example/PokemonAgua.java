@@ -20,8 +20,8 @@ public class PokemonAgua extends Pokemon {
     //Constructor default que inicializa un objeto del tipo PokemonAgua.
 
     public PokemonAgua() {
-        super("",0,0,"Agua");
-        this.poderAgua=0;
+        super();
+        this.poderAgua = 0;
     }
 
 
