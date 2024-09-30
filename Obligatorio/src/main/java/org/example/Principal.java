@@ -91,6 +91,6 @@ public class Principal {
             }
         } while (opcion != 0);
 
-        System.out.print("Saliendo...");
+        System.out.print("Saliendo...");//Sale del programa
     }
 }
