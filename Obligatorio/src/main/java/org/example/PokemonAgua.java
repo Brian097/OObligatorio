@@ -15,6 +15,7 @@ package org.example;
 public class PokemonAgua extends Pokemon {
     // Atributo que representa el poder de agua del Pokémon
     private int poderAgua;
+    private String ataqueEspecial;
 
 
     //Constructor default que inicializa un objeto del tipo PokemonAgua.
@@ -27,9 +28,10 @@ public class PokemonAgua extends Pokemon {
 
     //Constructor especifico que inicializa un objeto PokemonAgua con atributos ingresados.
 
-    public PokemonAgua(String nombre, int nivel, int puntosDeVida, String tipo, int poderAgua) {
+    public PokemonAgua(String nombre, int nivel, int puntosDeVida, String tipo, int poderAgua, String ataqueEspecial) {
         super(nombre, nivel, puntosDeVida, tipo); // Llamada al constructor de la clase base Pokemon
         this.poderAgua = poderAgua; // Inicializa el poder de agua
+        this.ataqueEspecial = ataqueEspecial; // Inicializa el especial
     }
 
     //Getter para obtener poderAgua.
@@ -42,9 +44,35 @@ public class PokemonAgua extends Pokemon {
         this.poderAgua = poderAgua;
     }
 
+    public String getAtaqueEspecial() {
+        return ataqueEspecial;
+    }
+
+    public void setAtaqueEspecial(String ataqueEspecial) {
+        this.ataqueEspecial = ataqueEspecial;
+    }
+
     //Metodo absracto para realzar un ataque especial
     @Override
     public String ataqueEspecial() {
-        return "\nEl pokemon " + getNombre() + " realiza un ataque de agua con" + getPoderAgua() + " punto de poder";
+        final String RESET = "\u001B[0m";
+        final String BLUE = "\u001B[34m";
+
+        return BLUE +
+                "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
+                "🌊 ¡El poder del agua fluye sin fin! 🌊\n" +
+                "Pokemon: " + getNombre() + "\n" +
+                "Ataque Especial: " + getAtaqueEspecial() + "\n" +
+                "Puntos de Poder: " + getPoderAgua() + "\n" +
+                "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" +
+                RESET;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                WHITE + "| Poder de Fuego     : " + getPoderAgua() + "\n" +
+                "| Ataque Especial    : " + getAtaqueEspecial() + "\n" +
+                RED + "+-------------------------------+\n" + RESET;
     }
 }

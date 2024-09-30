@@ -25,15 +25,12 @@ public class Principal {
         String rojo = "\u001B[31m";     // Color rojo
         String reset = "\u001B[0m";      // Restablecer color
 
-        /*
-        Variable emojis:
-        String emojiAgua = "\uD83D\uDCA7";
-        */
 
         //Scanner
         Scanner entradaDeTexto = new Scanner(System.in);
         Scanner entradaDeNumeros = new Scanner(System.in);
 
+        //Pokemon en ASCII
         System.out.println(amarillo +
                 "                               .::.                           \n"+
                 "                              .;:**'                          \n"+
@@ -53,8 +50,7 @@ public class Principal {
 
         //Menu
         do {
-
-            // Imprimir arte ASCII con bordes alternados
+            //Menu con borde de color
             System.out.println(blanco +                          "+++++++++++++++++++++++++++++++++++++++++" + reset);
             System.out.println(rojo   + "+" + reset + blanco + "                                       " + reset + rojo   + "+" + reset  );
             System.out.println(blanco + "+" + reset + blanco + "   -- Menú de Gestión de Pokémon--     " + reset + blanco + "+" + reset );
@@ -76,9 +72,11 @@ public class Principal {
                     break;
                 case 2:
                     //LLamo al metodo mostar pokemon
+                    Metodos.mostrarInformacion();
                     break;
                 case 3:
                     //LLamo al metodo ralizar un ataque especial
+                    Metodos.ataqueEspecial();
                     break;
                 case 4:
                     //LLamo al metodo calcular promedio
@@ -91,6 +89,6 @@ public class Principal {
             }
         } while (opcion != 0);
 
-        System.out.print("Saliendo...");//Sale del programa
+        System.out.print("Saliendo..."); //Sale del programa
     }
 }
