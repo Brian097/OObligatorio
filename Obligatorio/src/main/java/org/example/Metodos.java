@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 /**
  *
@@ -41,17 +42,38 @@ public class Metodos {
                 // Solicitar nombre
                 System.out.println(WHITE + "| Ingrese el nombre del Pokémon: |" + RESET);
                 System.out.print("| > ");
-                String nombre = entradaDeTexto.nextLine();
+                String nombre = "";
+                nombre = entradaDeTexto.nextLine();
 
                 // Solicitar nivel (0-100)
-                System.out.println(WHITE + "| Ingrese el nivel:              |" + RESET);
-                System.out.print("| > ");
-                int nivel = entradaDeNumero.nextInt();
+                int nivel = 0;
+                boolean entradaValida = false;
+                do {
+                    System.out.println(WHITE + "| Ingrese el nivel:              |" + RESET);
+                    System.out.print("| > ");
+                    try {
+                        nivel = entradaDeNumero.nextInt();  // Intenta leer el número
+                        entradaValida = true;  // Si la lectura es exitosa, marca la entrada como válida
+                    } catch (InputMismatchException e) {
+                        System.out.println("Error: Solo se permiten números.");
+                        entradaDeNumero.next();  // Limpia la entrada no válida
+                    }
+                } while (!entradaValida);
 
                 // Solicitar puntos de vida (1-100)
-                System.out.println(WHITE + "| Ingrese los puntos de vida:    |" + RESET);
-                System.out.print("| > ");
-                int puntosDeVida = entradaDeNumero.nextInt();
+                int puntosDeVida = 0;
+                entradaValida = false; // Reseteo entradavalida para volver a usarla
+                do {
+                    try{
+                        System.out.println(WHITE + "| Ingrese los puntos de vida:    |" + RESET);
+                        System.out.print("| > ");
+                        puntosDeVida = entradaDeNumero.nextInt();
+                        entradaValida = true;
+                    } catch (InputMismatchException e){
+                        System.out.println("Error: Solo se permiten números.");
+                        entradaDeNumero.next();  // Limpia la entrada no válida
+                    }
+                }while(!entradaValida);
 
                 // Solicitar tipo
                 System.out.println(WHITE + "| Ingrese el tipo (fuego, agua,  |" + RESET);
