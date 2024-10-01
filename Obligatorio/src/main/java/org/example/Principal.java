@@ -6,8 +6,8 @@ import java.util.Scanner;
  *
  * ESCUELA TÉCNICA DE ROCHA
  * BT - TECNOLOGÍAS DE LA INFORMACIÓN
- * @author BALDIVIESO - 57237477
- * @author MAGNONE - 54785814
+ * @author BRIAN BALDIVIESO - 57237477
+ * @author ENZO MAGNONE - 54785814
  * OBLIGATORIO - Gestión de un equipo de Pokémon.
  *
  **/

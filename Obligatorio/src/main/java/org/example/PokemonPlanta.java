@@ -17,43 +17,50 @@ public class PokemonPlanta extends Pokemon {
     private int poderPlanta;
     private String ataqueEspecial;
 
-
+    /**
+     * Constructores:
+     *  Por defecto
+     *  Especifico
+     */
     //Constructor default que inicializa un objeto del tipo PokemonPlanta.
-
     public PokemonPlanta() {
         super();
         this.poderPlanta = 0;
     }
 
-
     //Constructor especifico que inicializa un objeto PokemonPlanta con atributos ingresados.
-
     public PokemonPlanta(String nombre, int nivel, int puntosDeVida, String tipo, int poderPlanta, String ataqueEspecial) {
         super(nombre, nivel, puntosDeVida, tipo); // Llamada al constructor de la clase base Pokemon
         this.poderPlanta = poderPlanta; // Inicializa el poder de planta
         this.ataqueEspecial = ataqueEspecial; // Inicializa el ataque especial
     }
 
-
+    /**
+     * GETTERS AND SETTER
+     */
     //Getter para obtener poderPlanta.
     public int getPoderPlanta(){
         return poderPlanta;
     }
-
 
     //Setter para setear el poderPlanta.
     public void setPoderPlanta(int poderPlanta) {
         this.poderPlanta = poderPlanta;
     }
 
+    //Getter para obteber el ataque especial
     public String getAtaqueEspecial() {
         return ataqueEspecial;
     }
 
+    //Setter para settear el araque especial
     public void setAtaqueEspecial(String ataqueEspecial) {
         this.ataqueEspecial = ataqueEspecial;
     }
 
+    /**
+     * METODOS
+     */
     //Metodo absracto para realzar un ataque especial
     @Override
     public String ataqueEspecial() {
@@ -67,7 +74,6 @@ public class PokemonPlanta extends Pokemon {
                 "Puntos de Poder: " + getPoderPlanta() + "\n" +
                 "++++++++++++++++++++++++++++++++++++" +
                 RESET;
-
     }
 
     @Override

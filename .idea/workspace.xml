@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="e3517842-0666-4e91-923f-84b9910e273a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Obligatorio/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Obligatorio/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Obligatorio/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Obligatorio/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Obligatorio/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Obligatorio/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Obligatorio/src/main/java/org/example/Metodos.java" beforeDir="false" afterPath="$PROJECT_DIR$/Obligatorio/src/main/java/org/example/Metodos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Obligatorio/src/main/java/org/example/PokemonPlanta.java" beforeDir="false" afterPath="$PROJECT_DIR$/Obligatorio/src/main/java/org/example/PokemonPlanta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Obligatorio/src/main/java/org/example/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/Obligatorio/src/main/java/org/example/Principal.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,9 +18,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2mTrlbKyZsAiS5JcKiMEBrUmkpN" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -29,7 +31,11 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "F:/Proyectos/Obligatorio",
+    "last_opened_file_path": "/home/brian/OObligatorio",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
@@ -37,8 +43,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.22855.74" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.22855.74" />
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
       </set>
     </attachedChunks>
   </component>
@@ -51,6 +57,7 @@
       <option name="presentableId" value="Default" />
       <updated>1727111560315</updated>
       <workItem from="1727111561436" duration="63000" />
+      <workItem from="1727797904069" duration="2144000" />
     </task>
     <servers />
   </component>
