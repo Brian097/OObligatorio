@@ -48,7 +48,7 @@ public class Principal {
                 reset
         );
 
-        //Menu
+        //DO-WHILE para Menú
         do {
             //Menu con borde de color
             System.out.println(blanco +                          "+++++++++++++++++++++++++++++++++++++++++" + reset);

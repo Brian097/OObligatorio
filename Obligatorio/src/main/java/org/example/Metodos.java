@@ -84,53 +84,74 @@ public class Metodos {
                 System.out.print("| > ");
                 String tipo = entradaDeTexto.nextLine().toUpperCase();
 
-                // Corroboro el tipo con if, uso el método .equals para comparar cadenas y verificar el tipo de Pokémon.
-                if (tipo.equals("FUEGO")) {
-                    //Pedir poder
-                    System.out.println(blanco + "| Ingrese el poder del Pokémon:  |" + reset);
-                    System.out.print("| > ");
-                    int poderFuego = entradaDeNumero.nextInt();
-                    //Pedir ataque
-                    System.out.println(blanco + "| Ingrese el ataque del Pokémon: |" + reset);
-                    System.out.print("| > ");
-                    String ataqueEspecial = entradaDeTexto.nextLine().toUpperCase();
+                // Corroboro el tipo con switch
+                switch (tipo) {
+                    case "FUEGO":
+                        //Pedir poder del pokemon
+                        System.out.println(blanco + "| Ingrese el poder del Pokémon:  |" + reset);
+                        System.out.print("| > ");
+                        int poderFuego = entradaDeNumero.nextInt();
 
-                    equipoPokemon[contador] = new PokemonFuego(nombre, nivel, puntosDeVida, "fuego", poderFuego, ataqueEspecial);
-                    bandera = 1; //Establezco a uno la bandera para detener el while y finalizar
-                } else if (tipo.equals("PLANTA")) {
-                    System.out.println(blanco + "| Ingrese el poder del Pokémon:  |" + reset);
-                    System.out.print("| > ");
-                    int poderPlanta = entradaDeNumero.nextInt();
-                    System.out.println(blanco + "| Ingrese el ataque del Pokémon: |" + reset);
-                    System.out.print("| > ");
-                    String ataqueEspecial = entradaDeTexto.nextLine().toUpperCase();
+                        //Pedir ataque del pokemon
+                        System.out.println(blanco + "| Ingrese el ataque del Pokémon: |" + reset);
+                        System.out.print("| > ");
+                        String ataqueEspecial = entradaDeTexto.nextLine().toUpperCase();
 
-                    equipoPokemon[contador] = new PokemonPlanta(nombre, nivel, puntosDeVida, "planta", poderPlanta, ataqueEspecial);
-                    bandera = 1; //Establezco a uno la bandera para detener el while y finalizar
-                } else if (tipo.equals("ELECTRICO")) {
-                    System.out.println(blanco + "| Ingrese el poder del Pokémon:  |" + reset);
-                    System.out.print("| > ");
-                    int poderElectrico = entradaDeNumero.nextInt();
-                    System.out.println(blanco + "| Ingrese el ataque del Pokémon: |" + reset);
-                    System.out.print("| > ");
-                    String ataqueEspecial = entradaDeTexto.nextLine().toUpperCase();
+                        equipoPokemon[contador] = new PokemonFuego(nombre, nivel, puntosDeVida, "FUEGO", poderFuego, ataqueEspecial);
 
-                    equipoPokemon[contador] = new PokemonElectrico(nombre, nivel, puntosDeVida, "eléctrico", poderElectrico, ataqueEspecial);
-                    bandera = 1; //Establezco a uno la bandera para detener el while y finalizar
-                } else if (tipo.equals("AGUA")) {
-                    System.out.println(blanco + "| Ingrese el poder del Pokémon:  |" + reset);
-                    System.out.print("| > ");
-                    int poderAgua = entradaDeNumero.nextInt();
-                    System.out.println(blanco + "| Ingrese el ataque del Pokémon: |" + reset);
-                    System.out.print("| > ");
+                        bandera = 1; //Establezco a uno la bandera para detener el while y finalizar
+                        break;
+                    case "PLANTA":
+                        //Pedir poder del pokemon
+                        System.out.println(blanco + "| Ingrese el poder del Pokémon:  |" + reset);
+                        System.out.print("| > ");
+                        int poderPlanta = entradaDeNumero.nextInt();
 
-                    String ataqueEspecial = entradaDeTexto.nextLine().toUpperCase();
-                    equipoPokemon[contador] = new PokemonAgua(nombre, nivel, puntosDeVida, "agua", poderAgua, ataqueEspecial);
-                    bandera = 1; //Establezco a uno la bandera para detener el while y finalizar
-                } else {
-                    System.out.println(rojo + "Tipo de Pokémon inválido" + reset);
+                        //Pedir ataque del pokemon
+                        System.out.println(blanco + "| Ingrese el ataque del Pokémon: |" + reset);
+                        System.out.print("| > ");
+                        ataqueEspecial = entradaDeTexto.nextLine().toUpperCase();
+
+                        equipoPokemon[contador] = new PokemonPlanta(nombre, nivel, puntosDeVida, "PLANTA", poderPlanta, ataqueEspecial);
+
+                        bandera = 1; //Establezco a uno la bandera para detener el while y finalizar
+                        break;
+                    case "ELECTRICO":
+                        //Pedir poder del pokemon
+                        System.out.println(blanco + "| Ingrese el poder del Pokémon:  |" + reset);
+                        System.out.print("| > ");
+                        int poderElectrico = entradaDeNumero.nextInt();
+
+                        //Pedir ataque del pokemon
+                        System.out.println(blanco + "| Ingrese el ataque del Pokémon: |" + reset);
+                        System.out.print("| > ");
+                        ataqueEspecial = entradaDeTexto.nextLine().toUpperCase();
+
+                        equipoPokemon[contador] = new PokemonElectrico(nombre, nivel, puntosDeVida, "ELECTRICO", poderElectrico, ataqueEspecial);
+
+                        bandera = 1; //Establezco a uno la bandera para detener el while y finalizar
+                        break;
+                    case "AGUA":
+                        //Pedir poder del pokemon
+                        System.out.println(blanco + "| Ingrese el poder del Pokémon:  |" + reset);
+                        System.out.print("| > ");
+                        int poderAgua = entradaDeNumero.nextInt();
+
+                        //Pedir ataque del pokemon
+                        System.out.println(blanco + "| Ingrese el ataque del Pokémon: |" + reset);
+                        System.out.print("| > ");
+
+                        ataqueEspecial = entradaDeTexto.nextLine().toUpperCase();
+                        equipoPokemon[contador] = new PokemonAgua(nombre, nivel, puntosDeVida, "AGUA", poderAgua, ataqueEspecial);
+
+                        bandera = 1; //Establezco a uno la bandera para detener el while y finalizar
+                        break;
+                    default:
+                        System.out.println(rojo + "Tipo de Pokémon inválido" + reset);
+                        break;
                 }
 
+                //Si bandera vale uno, es decir el pokemon fue agregado, muestro mensaje
                 if (bandera == 1) {
                     System.out.println(amarillo + "+-------------------------------+" + reset);
                     System.out.println(rojo + "Pokémon agregado exitosamente!" + reset);
