@@ -10,9 +10,7 @@ package org.example;
  *
  **/
 
-/**
- * Clase PokemonFuego que extiende de la clase base Pokemon.
- */
+//Clase PokemonFuego que extiende de la clase base Pokemon.
 
 public class PokemonFuego extends Pokemon{
 

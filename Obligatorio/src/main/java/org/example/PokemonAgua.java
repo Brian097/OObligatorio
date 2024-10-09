@@ -1,4 +1,5 @@
 package org.example;
+
 /**
  *
  * ESCUELA TÉCNICA DE ROCHA
@@ -9,9 +10,7 @@ package org.example;
  *
  **/
 
-/**
- * Clase PokemonAgua que extiende de la clase base Pokemon.
- */
+//Clase PokemonAgua que extiende de la clase base Pokemon.
 public class PokemonAgua extends Pokemon {
     // Atributo que representa el poder de agua del Pokémon
     private int poderAgua;

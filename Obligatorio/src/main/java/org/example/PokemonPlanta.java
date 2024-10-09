@@ -9,9 +9,8 @@ package org.example;
  *
  **/
 
-/**
- * Clase PokemonPlanta que extiende de la clase base Pokemon.
- */
+//Clase PokemonPlanta que extiende de la clase base Pokemon.
+
 public class PokemonPlanta extends Pokemon {
     // Atributo que representa el poder de planta del Pokémon
     private int poderPlanta;
