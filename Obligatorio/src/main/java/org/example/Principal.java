@@ -74,7 +74,11 @@ public class Principal {
             switch(opcion){
                 case 1:
                     //LLamo al metodo agregar un pokemon
-                    agregarPokemon();
+                    ingresarNombre();
+                    ingresarNivel();
+                    ingresarTipo();
+                    ingresarPoderDeAtaque();
+                    ingresarNombreDeAtaque();
                     break;
                 case 2:
                     //LLamo al metodo mostar pokemon
@@ -368,4 +372,121 @@ public class Principal {
             return "No hay pokemons en tu equipo. Debes añadir al menos un pokemon.";
         }
     }
+    //
+    //
+    //
+    private static int ingresarNivel(){
+        int nivel = 0;
+        boolean entradaValida = false;
+        do {
+            System.out.println(blanco + "| Ingrese el nivel:              |" + reset);
+            System.out.print("| > ");
+            try {
+                Scanner entradaDeNumero2 = new Scanner(System.in);
+                nivel = entradaDeNumero2.nextInt();  // Intenta leer el número
+
+                if ((nivel >= 1) && (nivel <= 100)){
+                    entradaValida = true;  // Si la lectura es exitosa, marca la entrada como válida
+                } else {
+                    System.out.println("Solo se puede ingresar numeros del 1 al 100");
+                }
+            } catch (Exception e) {
+                System.out.println("Error: Solo se permiten números.");
+            }
+        } while (!entradaValida);
+        return nivel;
+    }
+    private static String ingresarNombre(){
+        String nombre;
+        Scanner datos=new Scanner(System.in);
+        System.out.println("Ingresa el nombre:");
+        nombre=datos.nextLine().toUpperCase();
+        return nombre;
+    }
+    private static int puntosDeVida(){
+        int puntosDeVida = 0;
+        Boolean entradaValida = false; // Reseteo entradavalida para volver a usarla
+        do {
+            System.out.println(blanco + "| Ingrese los puntos de vida:    |" + reset);
+            System.out.print("| > ");
+
+            try {
+                Scanner entradaDeNumero2 = new Scanner(System.in);
+                puntosDeVida = entradaDeNumero2.nextInt();
+
+                if ((puntosDeVida >= 0) && (puntosDeVida <= 100)){
+                    entradaValida = true;  // Si la lectura es exitosa, marca la entrada como válida
+                } else {
+                    System.out.println("Solo se puede ingresar numeros del 0 al 100");
+                }
+            } catch (Exception e) {
+                System.out.println("Error: Solo se permiten números.");
+            }
+        } while (!entradaValida);
+        return puntosDeVida;
+    }
+    private static String ingresarTipo(){
+        String tipo="";
+        Scanner datos=new Scanner(System.in);
+        Boolean entradaValida=false;
+        do {
+            System.out.println(blanco + "| Ingrese el tipo (fuego, agua,  |" + reset);
+            System.out.println(blanco + "| electrico o planta):           |" + reset);
+            System.out.print("| > ");
+            try {
+                tipo = datos.nextLine().toUpperCase();
+                switch (tipo){
+                    case "FUEGO":
+                        entradaValida=true;
+                        break;
+                    case "AGUA":
+                        entradaValida=true;
+                        break;
+                    case "ELECTRICO":
+                        entradaValida=true;
+                        break;
+                    case "PLANTA":
+                        entradaValida=true;
+                        break;
+                    default:
+                        System.out.println("Tipo de Pokemon invalido");
+                }
+            } catch (Exception ex) {
+                Scanner datos2 = new Scanner(System.in);
+                System.out.println("Solo se aceptan letras.");
+            }
+        }while(!entradaValida);
+        return tipo;
+    }
+    private static int ingresarPoderDeAtaque(){
+        int poderDeAtaque = 0;
+        Boolean entradaValida=false; // Reseteo entradavalida para volver a usarla
+        do {
+            System.out.println(blanco + "| Ingrese el poder del Pokémon(0-100):  |" + reset);
+            System.out.print("| > ");
+
+            try {
+                Scanner entradaDeNumero2 = new Scanner(System.in);
+                poderDeAtaque = entradaDeNumero2.nextInt();
+
+                if ((poderDeAtaque >= 0) && (poderDeAtaque <= 100)) {
+                    entradaValida = true;
+                }else{
+                    System.out.println("Solo se puede ingresar numeros enteros entre 0 y 100");
+                }
+            } catch (Exception e) {
+                System.out.println("ERROR: Solo se permiten números.");
+            }
+        } while(!entradaValida);
+        return poderDeAtaque;
+    }
+    private static String ingresarNombreDeAtaque(){
+        String nombreDeAtaque="";
+        Scanner datos=new Scanner(System.in);
+        System.out.println("Ingresa el nombre del ataque:");
+        nombreDeAtaque=datos.nextLine().toUpperCase();
+        return nombreDeAtaque;
+    }
 }
+
+
