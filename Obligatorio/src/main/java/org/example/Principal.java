@@ -11,9 +11,13 @@ import java.util.Scanner;
  * OBLIGATORIO - Gestión de un equipo de Pokémon.
  *
  **/
-//Clase principal
+
 public class Principal {
-    //Variable Códigos de color ANSI
+    /*
+      Variables Globales
+     */
+
+    //Variable Global Códigos de color ANSI
     final static String amarillo = "\u001B[33m";  // Color amarillo
     final static String azul = "\u001B[34m";      // Color azul
     final static String blanco = "\u001B[37m";   // Color blanco
@@ -21,22 +25,33 @@ public class Principal {
     final static String verde = "\u001B[32m"; // Color verde
     final static String reset = "\u001B[0m";      // Restablecer color
 
-    // Creamos los objetos del tipo Scanner para entrada de Datos
+    //Variables globales - Atrubutos
+    private static String nombre;
+    private static int nivel;
+    private static int puntosDeVida;
+    private static String nombreDeAtaque;
+    private static int poderDeAtaque;
+    private static String tipoPokemon;
+
+    //Variable opcion - bandera
+    static int opcion;
+
+    // Creaemos variable contador para saber cuántos Pokémon hay en el arreglo
+    static int contador = 0;
+
+    // Creamos los objetos globales del tipo Scanner para entrada de Datos
     static Scanner entradaDeTexto = new Scanner(System.in);
     static Scanner entradaDeNumeros = new Scanner(System.in);
 
-    // Creaemos contador para saber cuántos Pokémon hay en el arreglo
-    static int contador = 0;
+    //Creamos la variable entradaValida para salir de los do-while cuando se ingrese el dato de manera correcta
+    static boolean entradaValida;
 
     // Creamos el arreglo que almacenará los Pokémon
     static Pokemon[] equipoPokemon = new Pokemon[6];
 
     public static void main(String[] args) {
 
-        //Variables
-        int opcion; //Bandera
-
-        //Pokemon en ASCII
+        //Se imprime Pokemon en ASCII
         System.out.println(amarillo +
                 "                               .::.                           \n"+
                 "                              .;:**'                          \n"+
@@ -54,7 +69,9 @@ public class Principal {
                 reset
         );
 
-        //DO-WHILE para Menú
+        /**
+         * MENÚ
+         */
         do {
             //Menu con borde de color
             System.out.println(blanco +                          "+++++++++++++++++++++++++++++++++++++++++" + reset);
@@ -68,17 +85,36 @@ public class Principal {
             System.out.println(blanco + "+" + reset + blanco + "                                       " + reset + blanco + "+" + reset );
             System.out.println(rojo   +                          "+++++++++++++++++++++++++++++++++++++++++" + reset                        );
 
-            System.out.print("Seleccione una opción: ");
-            opcion = entradaDeNumeros.nextInt();
+            entradaValida = false; // Reseteo entradavalida, esta se usa de bandera para cuando la opcion no es valida.
+            do {
+
+                System.out.print("Seleccione una opción: ");
+
+                try {
+                    Scanner entradaDeNumeros2 = new Scanner(System.in);
+                    opcion = entradaDeNumeros2.nextInt();
+
+                    switch (opcion){
+                        case 0, 1, 2, 3, 4:
+                            entradaValida = true;
+                            break;
+                        default:
+                            System.out.println("ERROR, Ingrese una opcion valida (0-4).");
+                    }
+                } catch (Exception ex) {
+                    System.out.println("ERROR, Ingrese una opcion valida (0-4).");
+                }
+            } while(!entradaValida);
 
             switch(opcion){
                 case 1:
-                    //LLamo al metodo agregar un pokemon
-                    ingresarNombre();
-                    ingresarNivel();
-                    ingresarTipo();
-                    ingresarPoderDeAtaque();
-                    ingresarNombreDeAtaque();
+                    //LLamo al metodo agregar un pokemon si hay espacio en el equipo
+                    if (verificarEspacio(equipoPokemon)){
+                        agregarPokemon();
+                    } else {
+                        System.out.println(rojo + "El equipo está lleno, no se puede agregar más Pokémon." + reset);
+                    }
+
                     break;
                 case 2:
                     //LLamo al metodo mostar pokemon
@@ -102,226 +138,19 @@ public class Principal {
 
         System.out.println("Saliendo..."); //Sale del programa
     }
-    //Metodos
-
-    // Método usado para agregar un objeto Pokémon al arreglo.
-    public static void agregarPokemon() {
-        //variables
-        String ataqueEspecial;
-
-        if (contador < equipoPokemon.length) { //Uso if para verifiicar que aun haya espacio en el vector
-            int bandera = 0;
-            //MENU PARA AGREGAR POKÉMON
-
-            System.out.println(amarillo + "+-------------------------------+" + reset);
-            System.out.println(blanco + "|       AGREGAR NUEVO POKÉMON    |" + reset);
-            System.out.println(amarillo + "+-------------------------------+" + reset);
-
-            // Solicitar nombre
-            System.out.println(blanco + "| Ingrese el nombre del Pokémon: |" + reset);
-            System.out.print("| > ");
-            String nombre;
-            nombre = entradaDeTexto.nextLine().toUpperCase();
-
-            // Solicitar nivel (1-100)
-            int nivel = 0;
-            boolean entradaValida = false;
-            do {
-                System.out.println(blanco + "| Ingrese el nivel:              |" + reset);
-                System.out.print("| > ");
-                try {
-                    Scanner entradaDeNumero2 = new Scanner(System.in);
-                    nivel = entradaDeNumero2.nextInt();  // Intenta leer el número
-
-                    if ((nivel >= 1) && (nivel <= 100)){
-                        entradaValida = true;  // Si la lectura es exitosa, marca la entrada como válida
-                    } else {
-                        System.out.println("Solo se puede ingresar numeros del 1 al 100");
-                    }
-                } catch (Exception e) {
-                    System.out.println("Error: Solo se permiten números.");
-                }
-            } while (!entradaValida);
-
-            // Solicitar puntos de vida (0-100)
-            int puntosDeVida = 0;
-            entradaValida = false; // Reseteo entradavalida para volver a usarla
-            do {
-                System.out.println(blanco + "| Ingrese los puntos de vida:    |" + reset);
-                System.out.print("| > ");
-
-                try {
-                    Scanner entradaDeNumero2 = new Scanner(System.in);
-                    puntosDeVida = entradaDeNumero2.nextInt();
-
-                    if ((puntosDeVida >= 0) && (puntosDeVida <= 100)){
-                        entradaValida = true;  // Si la lectura es exitosa, marca la entrada como válida
-                    } else {
-                        System.out.println("Solo se puede ingresar numeros del 0 al 100");
-                    }
-                } catch (Exception e) {
-                    System.out.println("Error: Solo se permiten números.");
-                }
-            } while (!entradaValida);
-
-            do {
-                System.out.println(blanco + "| Ingrese el tipo (fuego, agua,  |" + reset);
-                System.out.println(blanco + "| electrico o planta):           |" + reset);
-                System.out.print("| > ");
-                String tipo = entradaDeTexto.nextLine().toUpperCase();
-
-                switch (tipo) {
-                    case "FUEGO":
-                        int poderFuego = 0;
-                        entradaValida = false; // Reseteo entradavalida para volver a usarla
-                        do {
-                            // Solicitar poder del Pokémon
-                            System.out.println(blanco + "| Ingrese el poder del Pokémon:  |" + reset);
-                            System.out.print("| > ");
-                            try {
-                                Scanner entradaDeNumero2 = new Scanner(System.in);
-                                poderFuego = entradaDeNumero2.nextInt();
-
-                                if ((poderFuego >= 0) && (poderFuego <= 100)){
-                                    entradaValida = true;
-                                } else {
-                                    System.out.println("Solo se puede ingresar nnumeros del 0 al 100.");
-                                }
-                            } catch (Exception e){
-                                System.out.println("Error: Solo se permiten números");
-                            }
-                        } while (!entradaValida);
-
-                        // Solicitar ataque del Pokémon
-                        System.out.println(blanco + "| Ingrese el ataque del Pokémon: |" + reset);
-                        System.out.print("| > ");
-                        ataqueEspecial = entradaDeTexto.nextLine().toUpperCase();
-
-                        //Creo el objeto pokemon con sus atributos
-                        equipoPokemon[contador] = new PokemonFuego(nombre, nivel, puntosDeVida, "FUEGO", poderFuego, ataqueEspecial);
-
-                        bandera = 1;
-                        break;
-
-                    case "PLANTA":
-                        // Solicitar poder del Pokémon
-                        int poderPlanta = 0;
-                        entradaValida = false; // Reseteo entradavalida para volver a usarla
-                        do {
-                            System.out.println(blanco + "| Ingrese el poder del Pokémon:  |" + reset);
-                            System.out.print("| > ");
-
-                            try {
-                                poderPlanta = entradaDeNumeros.nextInt();
-                                if ((poderPlanta >= 0) && (poderPlanta <= 100)) {
-                                    entradaValida = true;
-                                } else {
-                                    System.out.println("Solo se permiten números del 0 al 100.");
-                                }
-                            } catch (Exception e) {
-                                System.out.println("ERROR: Solo se permiten números.");
-                            }
-                        } while(!entradaValida);
-
-                        // Solicitar ataque del Pokémon
-                        System.out.println(blanco + "| Ingrese el ataque del Pokémon: |" + reset);
-                        System.out.print("| > ");
-                        ataqueEspecial = entradaDeTexto.nextLine().toUpperCase();
-
-                        //Creo el objeto pokemon con sus atributos
-                        equipoPokemon[contador] = new PokemonPlanta(nombre, nivel, puntosDeVida, "PLANTA", poderPlanta, ataqueEspecial);
-
-                        bandera = 1;
-                        break;
-
-                    case "ELECTRICO":
-                        // Solicitar poder del Pokémon
-                        int poderElectrico = 0;
-                        entradaValida = false; // Reseteo entradavalida para volver a usarla
-                        do {
-                            System.out.println(blanco + "| Ingrese el poder del Pokémon:  |" + reset);
-                            System.out.print("| > ");
-
-                            try {
-                                Scanner entradaDeNumero2 = new Scanner(System.in);
-                                poderElectrico = entradaDeNumero2.nextInt();
-
-                                if ((poderElectrico >= 0) && (poderElectrico <= 100)) {
-                                    entradaValida = true;
-                                } else {
-                                    System.out.println("Solo se premiten números del 0 al 100.");
-                                }
-                            } catch (Exception e) {
-                                System.out.println("ERROR: Solo se permiten números.");
-                            }
-                        } while(!entradaValida);
-                        // Solicitar ataque del Pokémon
-                        System.out.println(blanco + "| Ingrese el ataque del Pokémon: |" + reset);
-                        System.out.print("| > ");
-                        ataqueEspecial = entradaDeTexto.nextLine().toUpperCase();
-
-                        //Creo el objeto pokemon con sus atributos
-                        equipoPokemon[contador] = new PokemonElectrico(nombre, nivel, puntosDeVida, "ELECTRICO", poderElectrico, ataqueEspecial);
-
-                        bandera = 1;
-                        break;
-
-                    case "AGUA":
-                        // Solicitar poder del Pokémon
-                        int poderAgua = 0;
-                        entradaValida=false; // Reseteo entradavalida para volver a usarla
-                        do {
-                            System.out.println(blanco + "| Ingrese el poder del Pokémon:  |" + reset);
-                            System.out.print("| > ");
-
-                            try {
-                                Scanner entradaDeNumero2 = new Scanner(System.in);
-                                poderAgua = entradaDeNumero2.nextInt();
-
-                                if ((poderAgua >= 0) && (poderAgua <= 100)) {
-                                    entradaValida = true;
-                                }
-                            } catch (Exception e) {
-                                System.out.println("ERROR: Solo se permiten números.");
-                            }
-                        } while(!entradaValida);
-
-                        // Solicitar ataque del Pokémon
-                        System.out.println(blanco + "| Ingrese el ataque del Pokémon: |" + reset);
-                        System.out.print("| > ");
-                        ataqueEspecial = entradaDeTexto.nextLine().toUpperCase();
-
-                        //Creo el objeto pokemon con sus atributos
-                        equipoPokemon[contador] = new PokemonAgua(nombre, nivel, puntosDeVida, "AGUA", poderAgua, ataqueEspecial);
-
-                        bandera = 1;
-                        break;
-
-                    default:
-                        System.out.println(rojo + "Tipo de Pokémon inválido, por favor ingrese un tipo válido." + reset);
-                }
-            } while (bandera != 1);
-
-            //Si bandera vale uno, es decir el pokemon fue agregado, muestro mensaje
-            System.out.println(amarillo + "+-------------------------------+" + reset);
-            System.out.println(rojo + "Pokémon agregado exitosamente!" + reset);
-            contador++;
-
-        } else {
-            System.out.println(rojo + "El equipo está lleno, no se puede agregar más Pokémon." + reset);
-        }
-    }
 
     /**
-     * Método Mostrar Informacion
+     * Métodos
      */
+
+    //Metodo para mostrar informacion llamando a los getters de forma
     public static void mostrarInformacion() {
         if (contador == 0) {
             System.out.println("El equipo esta vacío.");
         } else {
             // Mostrar encabezado una sola vez con colores
-            System.out.println(rojo + "+-------------------------------+" + reset);
-            System.out.println(blanco + "|          INFO POKÉMON         |" + reset);
+            System.out.println(rojo +     "+-------------------------------+" + reset);
+            System.out.println(blanco +   "|          INFO POKÉMON         |" + reset);
             System.out.println(amarillo + "+-------------------------------+" + reset);
 
             for (int i = 0; i < contador; i++) {
@@ -367,45 +196,61 @@ public class Principal {
         //Si hay pokemon en el equipo calculo
         if(contador != 0) {
             promedio = sumaNiveles / contador;
-            return "El promedio de nivel de tu equipo es:"+promedio;
+            return "El promedio de nivel de tu equipo es: " + promedio;
         } else{
             return "No hay pokemons en tu equipo. Debes añadir al menos un pokemon.";
         }
     }
-    //
-    //
-    //
+
+    /**
+     * Metodos para agregar informacion del pokemon
+     */
+
+    //Metodo para solicitar el nombre del pokemon
+    private static String ingresarNombre(){
+        System.out.println(blanco + "| Ingrese el nombre del Pokémon: |" + reset);
+        System.out.print("| > ");
+        nombre = entradaDeTexto.nextLine().toUpperCase();
+
+        if (nombre == ""){
+            System.out.println(blanco + "| ERROR. El nombre no puede ser vacío." + reset);
+            return "";
+        } else {
+            return nombre;
+        }
+
+    }
+
+    //Metodo para ingresar nivel del pokemonz
     private static int ingresarNivel(){
-        int nivel = 0;
-        boolean entradaValida = false;
+        nivel = 0;
+        entradaValida = false;
+
         do {
             System.out.println(blanco + "| Ingrese el nivel:              |" + reset);
             System.out.print("| > ");
+
             try {
                 Scanner entradaDeNumero2 = new Scanner(System.in);
                 nivel = entradaDeNumero2.nextInt();  // Intenta leer el número
 
-                if ((nivel >= 1) && (nivel <= 100)){
-                    entradaValida = true;  // Si la lectura es exitosa, marca la entrada como válida
+                if ((nivel >= 1) && (nivel <= 100)){ //Limito el nivel
+                    entradaValida = true;  // Si se ingresó el dato de manera correcta marca la entrada como válida, y retorna nivel
                 } else {
-                    System.out.println("Solo se puede ingresar numeros del 1 al 100");
+                    System.out.println(blanco + "| Solo se puede ingresar numeros del 1 al 100" + reset);
                 }
             } catch (Exception e) {
-                System.out.println("Error: Solo se permiten números.");
+                System.out.println(blanco + "| Error: Solo se permiten números del 1 al 100." + reset);
             }
-        } while (!entradaValida);
+        } while (!entradaValida); //Si no se ha ingresado el dato de manera correcta se repite el metodo
+
         return nivel;
     }
-    private static String ingresarNombre(){
-        String nombre;
-        Scanner datos=new Scanner(System.in);
-        System.out.println("Ingresa el nombre:");
-        nombre=datos.nextLine().toUpperCase();
-        return nombre;
-    }
-    private static int puntosDeVida(){
-        int puntosDeVida = 0;
-        Boolean entradaValida = false; // Reseteo entradavalida para volver a usarla
+
+    private static int ingresarPuntosDeVida(){
+        puntosDeVida = 0;
+        entradaValida = false; // Reseteo entradavalida para volver a usarla
+
         do {
             System.out.println(blanco + "| Ingrese los puntos de vida:    |" + reset);
             System.out.print("| > ");
@@ -415,54 +260,53 @@ public class Principal {
                 puntosDeVida = entradaDeNumero2.nextInt();
 
                 if ((puntosDeVida >= 0) && (puntosDeVida <= 100)){
-                    entradaValida = true;  // Si la lectura es exitosa, marca la entrada como válida
+                    entradaValida = true;  // Si se ingresa el dato de manera correcta marca la entrada como valida y retorna puntosDeVida
                 } else {
-                    System.out.println("Solo se puede ingresar numeros del 0 al 100");
+                    System.out.println(blanco + "| Solo se puede ingresar numeros del 0 al 100" + reset);
                 }
             } catch (Exception e) {
-                System.out.println("Error: Solo se permiten números.");
+                System.out.println(blanco + "| Error: Solo se permiten números del 0 al 100." + reset);
             }
-        } while (!entradaValida);
+        } while (!entradaValida); //Si no se ha ingresado el dato de manera correcta se repite el metodo
+
         return puntosDeVida;
     }
+    
+    //Metodo para agregar tipo de pokemon
     private static String ingresarTipo(){
-        String tipo="";
-        Scanner datos=new Scanner(System.in);
-        Boolean entradaValida=false;
+        tipoPokemon = "";
+        entradaValida = false;
+
         do {
             System.out.println(blanco + "| Ingrese el tipo (fuego, agua,  |" + reset);
             System.out.println(blanco + "| electrico o planta):           |" + reset);
             System.out.print("| > ");
             try {
-                tipo = datos.nextLine().toUpperCase();
-                switch (tipo){
-                    case "FUEGO":
-                        entradaValida=true;
+                tipoPokemon = entradaDeTexto.nextLine().toUpperCase();
+
+                //Verifico que el tipo sea valido
+                switch (tipoPokemon){
+                    case "FUEGO", "AGUA", "ELECTRICO", "PLANTA":
+                        entradaValida = true; //Establezo como valida el ingreso del dato, para que no se siga repitiendo
                         break;
-                    case "AGUA":
-                        entradaValida=true;
-                        break;
-                    case "ELECTRICO":
-                        entradaValida=true;
-                        break;
-                    case "PLANTA":
-                        entradaValida=true;
-                        break;
+
                     default:
-                        System.out.println("Tipo de Pokemon invalido");
+                        System.out.println(blanco + "| Tipo de Pokemon invalido" + reset);
                 }
             } catch (Exception ex) {
-                Scanner datos2 = new Scanner(System.in);
-                System.out.println("Solo se aceptan letras.");
+                System.out.println(blanco + "| ERROR. Debes ingresar una de las opciones disponibles." + reset);
             }
-        }while(!entradaValida);
-        return tipo;
+        }while(!entradaValida); //Si el dato ingresado no es valido se repite el metodo
+
+        return tipoPokemon;
     }
+
     private static int ingresarPoderDeAtaque(){
-        int poderDeAtaque = 0;
-        Boolean entradaValida=false; // Reseteo entradavalida para volver a usarla
+        poderDeAtaque = 0;
+        entradaValida = false; // Reseteo entradavalida para volver a usarla
+
         do {
-            System.out.println(blanco + "| Ingrese el poder del Pokémon(0-100):  |" + reset);
+            System.out.println(blanco + "| Ingrese el poder del Pokémon:  |" + reset);
             System.out.print("| > ");
 
             try {
@@ -472,21 +316,93 @@ public class Principal {
                 if ((poderDeAtaque >= 0) && (poderDeAtaque <= 100)) {
                     entradaValida = true;
                 }else{
-                    System.out.println("Solo se puede ingresar numeros enteros entre 0 y 100");
+                    System.out.println(blanco + "| Solo se puede ingresar numeros enteros entre 0 y 100" + reset);
                 }
             } catch (Exception e) {
-                System.out.println("ERROR: Solo se permiten números.");
+                System.out.println(blanco + "| ERROR: Solo se permiten números." + reset);
             }
         } while(!entradaValida);
+
         return poderDeAtaque;
     }
+
     private static String ingresarNombreDeAtaque(){
-        String nombreDeAtaque="";
-        Scanner datos=new Scanner(System.in);
-        System.out.println("Ingresa el nombre del ataque:");
-        nombreDeAtaque=datos.nextLine().toUpperCase();
+        nombreDeAtaque = "";
+
+        System.out.println(blanco + "| Ingresa el nombre del ataque:  |" + reset);
+        System.out.print("| > ");
+        nombreDeAtaque = entradaDeTexto.nextLine().toUpperCase();
+
+        if (nombreDeAtaque == "") {
+            System.out.println("ERROR. El nombre del ataque no puede ser vacío.");
+        }
         return nombreDeAtaque;
     }
+
+    //Metodo para verificar si hay espacio en el equipo
+    private static boolean verificarEspacio(Pokemon[] equipoPokemon){
+        boolean hayEspacio = false; //Inicializo hayEspacio en false para que si no hay espacio se retorne false
+
+        //Se recorre los espacios del vector en vusca de un lugar libre
+        for (int i = 0; i < equipoPokemon.length; i++) {
+            //Si encuentra un lugar vacio (null) devuelve true
+            if(equipoPokemon[i] == null){
+                hayEspacio = true;
+            }
+        }
+
+        //Retorno hayEspacio
+        return hayEspacio;
+    }
+
+    //Metodo para agregar pokemon, aca llamo a los metodos necesarios
+    private static void agregarPokemon(){
+        //Imprimo la cabecera del menú para Agregar Pókemon
+        System.out.println(amarillo + "+-------------------------------+" + reset);
+        System.out.println(blanco + "|       AGREGAR NUEVO POKÉMON    |" + reset);
+        System.out.println(amarillo + "+-------------------------------+" + reset);
+
+        //Solicito nombre del Pokemon
+        do {
+            nombre = ingresarNombre();
+        } while (nombre == "");
+
+        //Solicito nivel del Pokemon
+        nivel = ingresarNivel();
+
+        //Solicito los puntos de vida del Pokemon
+        puntosDeVida = ingresarPuntosDeVida();
+
+        //Solicito tipo del Pokemon
+        tipoPokemon = ingresarTipo();
+
+        //Solicito poderDeAtaque
+        poderDeAtaque = ingresarPoderDeAtaque();
+
+        //SOlicito el ataque especial del pokemon
+        do{
+            nombreDeAtaque = ingresarNombreDeAtaque();
+        } while (nombreDeAtaque == ""); //Se repite mientras se ingrese un nombre de ataque vacío
+
+        //Luegog de pedir los datos termino el diseño del munú
+        System.out.println(amarillo + "+-------------------------------+" + reset);
+
+        //Creo el objeto pokemon segun su tipo con los datos ingresados, si hay espacio
+        switch (tipoPokemon) {
+            case "FUEGO":
+                equipoPokemon[contador] = new PokemonFuego(nombre, nivel, puntosDeVida, tipoPokemon, poderDeAtaque, nombreDeAtaque);
+                break;
+            case "AGUA":
+                equipoPokemon[contador] = new PokemonAgua(nombre, nivel, puntosDeVida, tipoPokemon, poderDeAtaque, nombreDeAtaque);
+                break;
+            case "PLANTA":
+                equipoPokemon[contador] = new PokemonPlanta(nombre, nivel, puntosDeVida, tipoPokemon, poderDeAtaque, nombreDeAtaque);
+                break;
+            case "ELECTRICO":
+                equipoPokemon[contador] = new PokemonElectrico(nombre, nivel, puntosDeVida, tipoPokemon, poderDeAtaque, nombreDeAtaque);
+                break;
+        }
+        contador++; //Se suma uno al contador cuando se agrega un pokemon
+        System.out.println(rojo + "Pokémon agregado exitosamente!" + reset);
+    }
 }
-
-
