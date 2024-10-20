@@ -70,7 +70,7 @@ public class PokemonAgua extends Pokemon {
     @Override
     public String toString() {
         return super.toString() +
-                WHITE + "| Poder de Fuego     : " + getPoderAgua() + "\n" +
+                WHITE + "| Poder de Agua     : " + getPoderAgua() + "\n" +
                 "| Ataque Especial    : " + getAtaqueEspecial() + "\n" +
                 RED + "+-------------------------------+\n" + RESET;
     }

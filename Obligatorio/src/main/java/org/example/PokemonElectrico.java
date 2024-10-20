@@ -71,7 +71,7 @@ public class PokemonElectrico extends Pokemon {
     @Override
     public String toString() {
         return super.toString() +
-                WHITE + "| Poder de Fuego     : " + getPoderElectrico() + "\n" +
+                WHITE + "| Poder Eléctrico     : " + getPoderElectrico() + "\n" +
                 "| Ataque Especial    : " + getAtaqueEspecial() + "\n" +
                 RED + "+-------------------------------+\n" + RESET;
     }

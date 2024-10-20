@@ -78,7 +78,7 @@ public class PokemonPlanta extends Pokemon {
     @Override
     public String toString() {
         return super.toString() +
-                WHITE + "| Poder de Fuego     : " + getPoderPlanta() + "\n" +
+                WHITE + "| Poder de Planta     : " + getPoderPlanta() + "\n" +
                 "| Ataque Especial    : " + getAtaqueEspecial() + "\n" +
                 RED + "+-------------------------------+\n" + RESET;
     }
