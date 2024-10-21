@@ -150,12 +150,11 @@ public class Principal {
             sumaNiveles += equipoPokemon.get(i).getNivel();
         }
         float promedio = sumaNiveles / equipoPokemon.size();
-        return "\n=> El promedio de nivel de tu equipo es: " + promedio + "\n";
+        return "\n=> El nivel promedio de tu equipo es: " + promedio + "\n";
     }
 
-
     /**
-     * Metodos para solicitar y valirad datos del Pokémon
+     * Metodos para solicitar y validar datos del Pokémon
      */
 
     // Solicita el nombre del pokemon
