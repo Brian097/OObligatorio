@@ -14,10 +14,19 @@ package org.example;
 
 public class PokemonFuego extends Pokemon{
 
-    // Atributo que representa el poder de fuego del Pokémon
+    // Atributo que representa el poder de fuego del Pokémon y ataque especial
     private int poderFuego;
     private String ataqueEspecial;
-    //Constructores
+
+    /**
+     * Códigos de color ANSI para la salida de consola.
+     */
+    final static String COLOR_ROJO = "\u001B[31m";
+    final static String COLOR_RESET = "\u001B[0m";
+
+    /**
+     * Constructores
+     */
     //Constructor default que inicializa un objeto del tipo PokemonFuego
     public PokemonFuego() {
         super();
@@ -31,6 +40,9 @@ public class PokemonFuego extends Pokemon{
         this.ataqueEspecial = ataqueEspecial; //Inicializa el ataque especial
     }
 
+    /**
+     * Getters y setters
+     */
     public  int getPoderFuego() {
         return poderFuego;
     }
@@ -52,23 +64,16 @@ public class PokemonFuego extends Pokemon{
      */
     @Override
     public String ataqueEspecial() {
-        final String RESET = "\u001B[0m";
-        final String RED = "\u001B[31m";
-
-        return RED +
-                "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n" +
-                "🔥 ¡El poder del fuego arde intensamente! 🔥\n" +
-                "Pokemon: " + getNombre() + "\n" +
-                "Ataque Especial: " + getAtaqueEspecial() + "\n" +
-                "Puntos de Poder: " + getPoderFuego() + "\n" +
-                "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" +
-                RESET;
+        return  "╔═════════════════════════════════════════════════════════\n" +
+                "║ El Pokémon " + COLOR_ROJO + getNombre() + COLOR_RESET + " realiza su ataque especial " + COLOR_ROJO + getAtaqueEspecial() + COLOR_RESET + "!\n" +
+                "║ Ha infringido un total de " + COLOR_ROJO + getPoderFuego() + COLOR_RESET + " puntos de daño.\n" +
+                "╚═════════════════════════════════════════════════════════\n" ;
     }
 
     public String toString() {
         return super.toString() +
-                WHITE + "| Poder de Fuego     : " + getPoderFuego() + "\n" +
-                "| Ataque Especial    : " + getAtaqueEspecial() + "\n" +
-                RED + "+-------------------------------+ \n" + RESET;
+                COLOR_BLANCO + "| Poder de Fuego : " + getPoderFuego() + "\n" +
+                "| Ataque Especial: " + getAtaqueEspecial() + "\n" +
+                COLOR_ROJO + "+-------------------------------+ \n" + COLOR_RESET;
     }
 }

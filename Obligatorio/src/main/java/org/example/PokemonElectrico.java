@@ -16,9 +16,20 @@ public class PokemonElectrico extends Pokemon {
     private int poderElectrico;
     private String ataqueEspecial;
 
+    /**
+     * Códigos de color ANSI para la salida de consola.
+     */
+    final static String COLOR_AMARILLO = "\u001B[33m";
+    final static String COLOR_AZUL = "\u001B[34m";
+    final static String COLOR_BLANCO = "\u001B[37m";
+    final static String COLOR_ROJO = "\u001B[31m";
+    final static String COLOR_VERDE = "\u001B[32m";
+    final static String COLOR_RESET = "\u001B[0m";
 
-     //Constructor default que inicializa un objeto del tipo PokemonElectrico.
-
+    /**
+     * Constructores
+     */
+    //Constructor default que inicializa un objeto del tipo PokemonElectrico.
     public PokemonElectrico() {
         super();
         this.poderElectrico = 0;
@@ -54,26 +65,20 @@ public class PokemonElectrico extends Pokemon {
     }
 
     //Metodo absracto para realzar un ataque especial
-     @Override
-     public String ataqueEspecial() {
-         final String RESET = "\u001B[0m";
-         final String YELLOW = "\u001B[33m";
+    @Override
+    public String ataqueEspecial() {
+        return  "╔═════════════════════════════════════════════════════════\n" +
+                "║ El Pokémon " + getNombre() + " realiza su ataque especial " + getAtaqueEspecial() + "!\n" +
+                "║ Ha infringido un total de " + getPoderElectrico() + " puntos de daño.\n" +
+                "╚═════════════════════════════════════════════════════════\n";
+    }
 
-         return YELLOW +
-                 "************************************\n" +
-                 "⚡ ¡El poder del rayo destella feroz! ⚡\n" +
-                 "Pokemon: " + getNombre() + "\n" +
-                 "Ataque Especial: " + getAtaqueEspecial() + "\n" +
-                 "Puntos de Poder: " + getPoderElectrico() + "\n" +
-                 "************************************" +
-                 RESET;
-     }
     @Override
     public String toString() {
         return super.toString() +
-                WHITE + "| Poder Eléctrico     : " + getPoderElectrico() + "\n" +
-                "| Ataque Especial    : " + getAtaqueEspecial() + "\n" +
-                RED + "+-------------------------------+\n" + RESET;
+                COLOR_BLANCO + "| Poder Eléctrico: " + getPoderElectrico() + "\n" +
+                "| Ataque Especial: " + getAtaqueEspecial() + "\n" +
+                COLOR_ROJO + "+-------------------------------+\n" + COLOR_RESET;
     }
 }
 

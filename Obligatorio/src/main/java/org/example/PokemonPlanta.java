@@ -17,9 +17,17 @@ public class PokemonPlanta extends Pokemon {
     private String ataqueEspecial;
 
     /**
-     * Constructores:
-     *  Por defecto
-     *  Especifico
+     * Códigos de color ANSI para la salida de consola.
+     */
+    final static String COLOR_AMARILLO = "\u001B[33m";
+    final static String COLOR_AZUL = "\u001B[34m";
+    final static String COLOR_BLANCO = "\u001B[37m";
+    final static String COLOR_ROJO = "\u001B[31m";
+    final static String COLOR_VERDE = "\u001B[32m";
+    final static String COLOR_RESET = "\u001B[0m";
+
+    /**
+     * Constructores
      */
     //Constructor default que inicializa un objeto del tipo PokemonPlanta.
     public PokemonPlanta() {
@@ -63,24 +71,18 @@ public class PokemonPlanta extends Pokemon {
     //Metodo absracto para realzar un ataque especial
     @Override
     public String ataqueEspecial() {
-        final String GREEN = "\u001B[32m";
-
-        return GREEN +
-                "++++++++++++++++++++++++++++++++++++\n" +
-                "🌱 ¡La fuerza de la naturaleza crece! 🌱\n" +
-                "Pokemon: " + getNombre() + "\n" +
-                "Ataque Especial: " + getAtaqueEspecial() + "\n" +
-                "Puntos de Poder: " + getPoderPlanta() + "\n" +
-                "++++++++++++++++++++++++++++++++++++" +
-                RESET;
+        return  "╔═════════════════════════════════════════════════════════\n" +
+                "║ El Pokémon " + getNombre() + " realiza su ataque especial " + getAtaqueEspecial() + "!\n" +
+                "║ Ha infringido un total de " + getPoderPlanta() + " puntos de daño.\n" +
+                "╚═════════════════════════════════════════════════════════\n";
     }
 
     @Override
     public String toString() {
         return super.toString() +
-                WHITE + "| Poder de Planta     : " + getPoderPlanta() + "\n" +
-                "| Ataque Especial    : " + getAtaqueEspecial() + "\n" +
-                RED + "+-------------------------------+\n" + RESET;
+                COLOR_BLANCO + "| Poder de Planta: " + getPoderPlanta() + "\n" +
+                "| Ataque Especial: " + getAtaqueEspecial() + "\n" +
+                COLOR_ROJO + "+-------------------------------+\n" + COLOR_RESET;
     }
 
 }

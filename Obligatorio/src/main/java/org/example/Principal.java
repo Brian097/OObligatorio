@@ -29,7 +29,6 @@ public class Principal {
      * Códigos de color ANSI para la salida de consola.
      */
     final static String COLOR_AMARILLO = "\u001B[33m";
-    final static String COLOR_AZUL = "\u001B[34m";
     final static String COLOR_BLANCO = "\u001B[37m";
     final static String COLOR_ROJO = "\u001B[31m";
     final static String COLOR_VERDE = "\u001B[32m";
@@ -91,30 +90,37 @@ public class Principal {
         }
     }
     /**
-     * Metodo que permite al usuario elegir un Pokémon y realizar su ataque especial.
+     * Metodo para elejir un pokémon para realizar ataque especial
      */
-    public static void realizarAtaqueEspecial() {
+    public static int elegirPokemonAtaque(){
+        //Imprimo cabezera
+        System.out.println("\n╔═══════════════════════════════╗");
+        System.out.println(  "║     SELECCIONA TU POKÉMON     ║");
+        System.out.println(  "╚═══════════════════════════════╝");
+
         // Muestro los nombres de los pokémon
         for (int i = 0; i < equipoPokemon.size(); i++) {
-            System.out.println(COLOR_AZUL + (i+1) + ". " + COLOR_RESET +COLOR_VERDE + equipoPokemon.get(i).getNombre() + COLOR_RESET);
+            System.out.println("+ " + COLOR_ROJO + (i+1) + ". " + COLOR_RESET + COLOR_BLANCO  + equipoPokemon.get(i).getNombre() + COLOR_RESET);
         }
 
-        int pokemonElejido = -1; //Inicializo la variable que va a almacenar el pokemon elejido por el usuario
+        System.out.println("─────────────────────────────────");
+
+        int pokemonElegido = -1; //Inicializo la variable que va a almacenar el pokemon elegido por el usuario
         entradaValida = false; // Restablezco entradaValida a false para usarla nuevamente
+
         do {
             // pregunto cual pokemon va a realizar el ataque
-            System.out.print(COLOR_BLANCO +  "Elige un pokemon para realizar un ataque especial: " + COLOR_RESET);
+            System.out.print(COLOR_BLANCO +  "Seleccione un número para elegir un Pokémon: " + COLOR_RESET);
 
             try{
                 Scanner entradaParaTryCatch = new Scanner(System.in);
-                pokemonElejido = entradaParaTryCatch.nextInt() - 1; // Intenta leer el numero
+                pokemonElegido = entradaParaTryCatch.nextInt() - 1; // Intenta leer el numero
 
-                //verifico que se haya elejido un pokemon existente
-                if (pokemonElejido >= equipoPokemon.size() || pokemonElejido < 0){
+                //verifico que se haya elegidokemonElegido >= equipoPokemon.size() || pokemonElegido < 0){ un pokemon existente
+                if (pokemonElegido >= equipoPokemon.size() || pokemonElegido < 0){
                     System.out.println(COLOR_ROJO + "ERROR: Debe ingresar el indice entero de un pokémon válido" + COLOR_RESET);
                 }else {
-                    // muestro el ataque especial del pokemon elejido
-                    System.out.println(equipoPokemon.get(pokemonElejido).ataqueEspecial());
+                    // muestro el ataque especial del pokemon elegido
                     entradaValida = true;  // Si se ingresó el dato de manera correcta marca la entrada como válida
                 }
             }catch (Exception e){
@@ -122,7 +128,17 @@ public class Principal {
             }
         } while (!entradaValida); //Si no se ha ingresado el dato de manera correcta se repite el metodo
 
+        return pokemonElegido;
 
+    }
+
+
+    /**
+     * Metodo que permite al usuario elegir un Pokémon y realizar su ataque especial.
+     */
+    public static void realizarAtaqueEspecial(int pokemonElegido) {
+        // muestro el ataque especial del pokemon elegido
+        System.out.println(equipoPokemon.get(pokemonElegido).ataqueEspecial());
     }
 
     /**
@@ -223,7 +239,7 @@ public class Principal {
 
                 //Verifico que el tipo sea valido
                 switch (tipoPokemon){
-                    case "FUEGO", "AGUA", "ELECTRICO", "PLANTA":
+                    case "FUEGO", "AGUA", "ELECTRICO", "PLANTA","ELÉCTRICO":
                         entradaValida = true; //Establezo como valida el ingreso del dato, para que no se siga repitiendo
                         break;
 
@@ -332,7 +348,10 @@ public class Principal {
             case "PLANTA":
                 equipoPokemon.add(new PokemonPlanta(nombre, nivel, puntosDeVida, tipoPokemon, poderDeAtaque, nombreDeAtaque));
                 break;
-            case "ELECTRICO":
+            case ("ELECTRICO"):
+                equipoPokemon.add(new PokemonElectrico(nombre, nivel, puntosDeVida, "ELÉCTRICO", poderDeAtaque, nombreDeAtaque));
+                break;
+            case("ELÉCTRICO"):
                 equipoPokemon.add(new PokemonElectrico(nombre, nivel, puntosDeVida, tipoPokemon, poderDeAtaque, nombreDeAtaque));
                 break;
         }
@@ -428,12 +447,18 @@ public class Principal {
                 }
                 break;
             case ATAQUE_ESPECIAL:
+                int pokemonElegido;
+                entradaValida = false; // Reseteo entradavalida, esta se usa de bandera para cuando la opcion no es valida.
+
                 //LLamo al metodo ralizar un ataque especial, si hay pokémon en el equipo
                 if (equipoPokemon.size() == 0){
                     System.out.println(COLOR_ROJO + "No hay Pokémon en el equipo." + COLOR_RESET);
                 } else {
-                    realizarAtaqueEspecial();
+                    pokemonElegido = elegirPokemonAtaque();;
+                    realizarAtaqueEspecial(pokemonElegido);
                 }
+
+
                 break;
             case PROMEDIO_NIVEL:
                 //LLamo al metodo calcular promedio, si hay pokémon en el equipo

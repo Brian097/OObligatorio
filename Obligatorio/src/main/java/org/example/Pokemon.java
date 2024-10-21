@@ -16,12 +16,14 @@ public abstract class Pokemon{
     private int puntosDeVida; //Atributo que representa los puntos de vida del Pokemon
     private String tipo; //Atributo que representa el tipo de Pokemon
 
-    //Colores
-    public static final String RESET = "\u001B[0m";
-    public static final String RED = "\u001B[31m";
-    public static final String WHITE = "\u001B[37m";
-    public static final String YELLOW = "\u001B[33m";
+    /**
+     * Códigos de color ANSI para la salida de consola.
+     */
+    final static String COLOR_BLANCO = "\u001B[37m";
 
+    /**
+     * Constructores
+     */
     //Creamos el constructor default que inicializa un objeto del tipo Pokemon con valores por defecto.
     public Pokemon(){
         this.nombre = "";
@@ -79,7 +81,7 @@ public abstract class Pokemon{
     @Override
     public String toString() {
         // Imprimir la información de cada Pokémon
-        return WHITE +
+        return COLOR_BLANCO +
                 "| Nombre         : " + getNombre() + "\n" +
                 "| Nivel          : " + getNivel() + "\n" +
                 "| Puntos de vida : " + getPuntosDeVida() + "\n" +
