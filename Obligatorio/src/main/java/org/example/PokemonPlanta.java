@@ -20,7 +20,6 @@ public class PokemonPlanta extends Pokemon {
      * Códigos de color ANSI para la salida de consola.
      */
     final static String COLOR_AMARILLO = "\u001B[33m";
-    final static String COLOR_AZUL = "\u001B[34m";
     final static String COLOR_BLANCO = "\u001B[37m";
     final static String COLOR_ROJO = "\u001B[31m";
     final static String COLOR_VERDE = "\u001B[32m";
@@ -72,8 +71,8 @@ public class PokemonPlanta extends Pokemon {
     @Override
     public String ataqueEspecial() {
         return  "╔═════════════════════════════════════════════════════════\n" +
-                "║ El Pokémon " + getNombre() + " realiza su ataque especial " + getAtaqueEspecial() + "!\n" +
-                "║ Ha infringido un total de " + getPoderPlanta() + " puntos de daño.\n" +
+                "║ El Pokémon " + COLOR_VERDE + getNombre() + COLOR_RESET + " realiza su ataque especial " + COLOR_AMARILLO + getAtaqueEspecial() + COLOR_RESET + "!\n" +
+                "║ Ha infringido un total de " + COLOR_AMARILLO + getPoderPlanta() + COLOR_RESET + " puntos de daño.\n" +
                 "╚═════════════════════════════════════════════════════════\n";
     }
 
