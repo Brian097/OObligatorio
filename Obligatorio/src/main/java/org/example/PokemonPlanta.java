@@ -71,8 +71,8 @@ public class PokemonPlanta extends Pokemon {
     @Override
     public String ataqueEspecial() {
         return  "╔═════════════════════════════════════════════════════════\n" +
-                "║ El Pokémon " + COLOR_VERDE + getNombre() + COLOR_RESET + " realiza su ataque especial " + COLOR_AMARILLO + getAtaqueEspecial() + COLOR_RESET + "!\n" +
-                "║ Ha infringido un total de " + COLOR_AMARILLO + getPoderPlanta() + COLOR_RESET + " puntos de daño.\n" +
+                "║ El Pokémon " + COLOR_VERDE + getNombre() + COLOR_RESET + " realiza su ataque especial " + COLOR_VERDE + getAtaqueEspecial() + COLOR_RESET + "!\n" +
+                "║ Ha infringido un total de " + COLOR_VERDE + getPoderPlanta() + COLOR_RESET + " puntos de daño.\n" +
                 "╚═════════════════════════════════════════════════════════\n";
     }
 

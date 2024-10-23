@@ -154,7 +154,7 @@ public class Principal {
     }
 
     /**
-     * Metodos para solicitar y validar datos del Pokémon
+     * Metodos para solicitar y validar  datos del Pokémon
      */
 
     // Solicita el nombre del pokemon
